@@ -11,9 +11,7 @@ func TestName(t *testing.T) {
 	expected := "John Doe"
 	actual := person.Name()
 
-	if expected != actual {
-		t.Fatalf("Name() returned '%v', expected '%v'", actual, expected)
-	}
+	assertEquals(t, "Name()", expected, actual)
 }
 
 func TestFirstName(t *testing.T) {
@@ -22,9 +20,7 @@ func TestFirstName(t *testing.T) {
 	expected := "John"
 	actual := person.FirstName()
 
-	if expected != actual {
-		t.Fatalf("FirstName() returned '%v', expected '%v'", actual, expected)
-	}
+	assertEquals(t, "FirstName()", expected, actual)
 }
 
 func TestLastName(t *testing.T) {
@@ -33,7 +29,20 @@ func TestLastName(t *testing.T) {
 	expected := "Doe"
 	actual := person.LastName()
 
+	assertEquals(t, "LastName()", expected, actual)
+}
+
+func TestAge(t *testing.T) {
+	person := person{age: 25}
+
+	expected := 25
+	actual := person.Age()
+
+	assertEquals(t, "Age()", expected, actual)
+}
+
+func assertEquals(t *testing.T, description string, expected interface{}, actual interface{}) {
 	if expected != actual {
-		t.Fatalf("LastName() returned '%v', expected '%v'", actual, expected)
+		t.Fatalf("%v returned '%v', expected '%v'", description, actual, expected)
 	}
 }
