@@ -4,11 +4,21 @@ import "fmt"
 
 type Person interface {
 	Name() string
+	FirstName() string
+	LastName() string
 }
 
 type person struct {
 	firstName string
 	lastName  string
+}
+
+func (p *person) FirstName() string {
+	return p.firstName
+}
+
+func (p *person) LastName() string {
+	return p.lastName
 }
 
 func New(firstName string, lastName string) Person {
